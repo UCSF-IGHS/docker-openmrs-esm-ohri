@@ -1,103 +1,66 @@
-# OHRI ESM
+# OHRI ESM Docker Distribution
 
-A custom microfrontend for OpenMRS HIV Reference Implementation (OHRI)
-## Badges
-[![Node.js CI](https://github.com/UCSF-IGHS/openmrs-esm-ohri/actions/workflows/node.js.yml/badge.svg?branch=working)](https://github.com/UCSF-IGHS/openmrs-esm-ohri/actions/workflows/node.js.yml)
+A Docker distribution for a custom microfrontend for OpenMRS HIV Reference Implementation (OHRI)
 
-![Badges](badges/badge-branches.svg) ![Badges](badges/badge-functions.svg) ![Badges](badges/badge-lines.svg)
-## Overview
+## Prerequisites
 
-(tbd)
-
-## Built With
-
-* [React](https://reactjs.org/) ([TypeScript](https://www.typescriptlang.org)) - Front-end JS library
-* [Formik](https://formik.org/docs/overview) - Form builder JS library
-* [Day.js](https://day.js.org/) - Date library
-* [Jest](https://jestjs.io/) - JS testing framework
-* [React Testing Library](https://testing-library.com/) - JS testing library for React components
-* [npm](https://www.npmjs.com/) - Node package manager
-* [webpack](https://webpack.js.org/) - JS module bundler
-* [ESLint](https://eslint.org/) - JS linter
-* [Prettier](https://prettier.io/) - Code formatter
-* [Babel](https://babeljs.io/) - JS compiler
-* [Travis CI](https://travis-ci.org/) - CI service
+- [Docker](https://www.docker.com/products/docker-desktop)
+- Docker Image [histacohri/docker-openmrs-esm-ohri](https://hub.docker.com/r/histacohri/docker-openmrs-esm-ohri)
 
 ## Installation
 
-### Prerequisites
-
-* [Node](https://nodejs.org/en/download/)
-* [Git](https://git-scm.com/downloads)
-* [openmrs-esm-ohri](https://github.com/UCSF-IGHS/openmrs-esm-ohri)
-
-### Setup OHRI Module
-
-1. Clone the [openmrs-esm-ohri](https://github.com/UCSF-IGHS/openmrs-esm-ohri) repo.
+1. Download and install [Docker](https://www.docker.com/products/docker-desktop) on your machine
+2. Clone this repo and enter the newly-created folder
 
 ```sh
-git clone https://github.com/UCSF-IGHS/openmrs-esm-ohri.git
+git clone <repo> && cd <repo name>
 ```
 
-2. Install dependencies in the root directory of the repo.
-- make sure you are using a relatively recent version of node, LTE is 14.x.x, you can type node -version to find your current version. I would recommend using n to manage your node version: see https://www.npmjs.com/package/n
-```sh
-npm i
-```
+## Running Docker Image
 
-3. Run the module from `localhost:8080`.
+The docker image can be used in two ways: static (without code modifications) or dynamic (with code modifications).
+After running any of the commands below, you can access the app at `localhost:8080/openmrs/spa`.
 
-```sh
-npm run serve
-```
+### Static
 
-### Setup Dev Tools
-
-1. Click `Add new module` in the dev tools window.
-2. Type in the `Module Name:` `@openmrs/esm-ohri-app`.
-3. Type in the `Override URL:` `8080`.
-4. Go to the browser's development tools (e.g. via `Inspect`).
-5. Go to the `Application` tab.
-6. Go to `Local Storage`.
-7. Find the key: `import-map-override:@openmrs/esm-ohri-app`
-8. Update the corresponding value to: `//localhost:8080/openmrs-esm-ohri.js`.
-9. Click on the padlock/warning message next to the URL in the browser.
-10. Select the `Allow` option from the `Insecure content` dropdown in the browser settings page.
-11. Refresh the page.
-
-Optional Steps:
-To enable Devtools (a gray or red rectangular button near the bottom right of the screen): Open cosole of Developer Tools -> In console enter: ```localStorage.setItem('openmrs:devtools', true)```
-
-## Tests
-
-To verify that all of the tests run:
+In the static mode, you will get to test the ESM without being able to make changes to its source code.
 
 ```sh
-npm test
+npm run docker
 ```
- 
-*Note: Run `npm i` before running tests for the first time.*
 
-## Deployment
+**Note:** You can also run the docker command directly, without using the npm script
 
-Currently, available releases for this module:
-- [![DEMO](https://ohri-demo.globalhealthapp.net/)] 
+```sh
+docker run -p 8080:8080 -p 8081:8081 histacoohri/docker-openmrs-esm-ohri:v0.6.3 npx openmrs develop --backend https://ohri-dev.globalhealthapp.net
+```
 
-## Configuration
+### Dynamic
 
-This module is designed to be driven by configuration files. These files define the look and functionality required to drive the OHRI module.
+In the dynamic mode, the folder `src` on your local machine gets mounted to the container so that changes you make locally are reflected in the container. The image has **live reload** enabled, so the changes are automatically applied to the container.
 
-*Note: Currently, the module cannot be configured as it is in the early stages of development.*
+```sh
+npm run docker:dev
+```
 
-## Resources
-Optional Steps:
-To run against a deployment server (to reflect local changes that will be on server upon Deployment): 
-On terminal run ->  ```npx openmrs develop --backend https://{server-address}```
+**Note:** You can also run the docker command directly, without using the npm script
 
-(tbd)
-## Acknowledgements
+```sh
+docker compose up
+```
 
-(tbd)
-## License
+We're using `docker compose` to simplify the process of mounting the local `src` directory to the container.
 
-[MPL 2.0 w/ HD](http://openmrs.org/license/) © [OpenMRS Inc.](http://www.openmrs.org/)
+## Build process
+
+After running the commands, you will see
+
+Screen Shot 2021-12-03 at 00.01.03  
+
+![Building module](BUILDING.png)
+
+After about 3mins, your build will complete and you can now access the application at `localhost:8080/openmrs/spa`
+
+Screen Shot 2021-12-03 at 00.03.52
+
+![Build complete](BUILD_COMPLETE.png)

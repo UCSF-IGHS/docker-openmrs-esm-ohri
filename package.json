@@ -18,7 +18,9 @@
     "prepublishOnly": "npm run build",
     "test": "jest --config ./jest.config.js --passWithNoTests",
     "coverage": "npm test -- --coverage",
-    "badges": "npm run coverage && jest-coverage-badges --output './badges' "
+    "badges": "npm run coverage && jest-coverage-badges --output './badges' ",
+    "docker": "docker run -p 8080:8080 -p 8081:8081 histacohri/docker-openmrs-esm-ohri:v.6 npx openmrs develop --backend https://ohri-working.globalhealthapp.net",
+    "docker:dev": "docker compose up"
   },
   "browserslist": [
     "extends browserslist-config-openmrs"

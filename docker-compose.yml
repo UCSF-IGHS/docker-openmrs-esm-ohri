@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  ohri:
+    image: histacoohri/docker-openmrs-esm-ohri:v0.6.3
+    command: "npx openmrs develop --backend https://ohri-dev.globalhealthapp.net"
+    ports:
+      - 8080:8080
+      - 8081:8081
+    volumes:
+      - ./src:/app/src
