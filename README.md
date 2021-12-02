@@ -5,7 +5,7 @@ A Docker distribution for a custom microfrontend for OpenMRS HIV Reference Imple
 ## Prerequisites
 
 - [Docker](https://www.docker.com/products/docker-desktop)
-- Docker Image [histacohri/docker-openmrs-esm-ohri](https://hub.docker.com/r/histacohri/docker-openmrs-esm-ohri)
+- Docker Image [histacohri/docker-openmrs-esm-ohri](https://hub.docker.com/repository/docker/histacoohri/docker-openmrs-esm-ohri)
 
 ## Installation
 
@@ -55,12 +55,16 @@ We're using `docker compose` to simplify the process of mounting the local `src`
 
 After running the commands, you will see
 
-Screen Shot 2021-12-03 at 00.01.03  
+![Building module] 
 
-![Building module](BUILDING.png)
+![Screen Shot 2021-12-03 at 00 01 03](https://user-images.githubusercontent.com/4475142/144519142-f2955512-4a81-44ab-b6be-3bcf866efbcf.png)
+
+
 
 After about 3mins, your build will complete and you can now access the application at `localhost:8080/openmrs/spa`
 
-Screen Shot 2021-12-03 at 00.03.52
+![Build complete] 
 
-![Build complete](BUILD_COMPLETE.png)
+![Screen Shot 2021-12-03 at 00 03 52](https://user-images.githubusercontent.com/4475142/144519113-23128ca6-ccfc-49ec-8c47-3899ea9d84be.png)
+
+
