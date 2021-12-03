@@ -2,7 +2,23 @@
 
 A Docker distribution for a custom microfrontend for OpenMRS HIV Reference Implementation (OHRI)
 
+
+
 ## Prerequisites
+
+What to install - 
+
+Prerequisites to have an environment:
+
+To run OHRI using Docker in your computer, you need:
+
+[Install Git]: https://git-scm.com/downloads
+
+To develop OHRI using the image, please install. 
+
+VSCode: https://code.visualstudio.com/download ORSublime Text:  
+
+- [Install Node]https://nodejs.org/en/download/
 
 - [Docker](https://www.docker.com/products/docker-desktop)
 - Docker Image [histacohri/docker-openmrs-esm-ohri](https://hub.docker.com/repository/docker/histacoohri/docker-openmrs-esm-ohri)
